@@ -15,4 +15,14 @@ server.post("/sign-up", (req, res) => {
   res.send("OK");
 });
 
+server.post("/tweets", (req, res) => {
+  const tweet = req.body.tweet;
+  const username = req.body.username;
+  const user = users.find((user) => user.username === username);
+  const avatar = user.avatar;
+  tweets.push({ tweet, username, avatar });
+  console.log(avatar);
+  res.send("OK");
+});
+
 server.listen(5000);
